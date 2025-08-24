@@ -31,7 +31,7 @@ jobs:
           cp -R .next deploy/.next
           cp -R public deploy/public
           cp package.json deploy/package.json
-          cp next.config.js deploy/next.config.js
+          cp next.config.mjs deploy/next.config.mjs
           cp -R node_modules deploy/node_modules
 
       - name: Upload artifact for deployment
