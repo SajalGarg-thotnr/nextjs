@@ -1,0 +1,22 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/fdea6_next_dist_29ab67b9._.js",
+      "static/chunks/nextjs_my-app_app_favicon_ico_mjs_28274d25._.js",
+      "static/chunks/[root-of-the-server]__2ebfbceb._.css",
+      "static/chunks/nextjs_my-app_app_layout_b8c4c903.js",
+      "static/chunks/fdea6_next_dist_client_components_builtin_global-error_d8116a46.js",
+      "static/chunks/fdea6_next_dist_7396d966._.js",
+      "static/chunks/nextjs_my-app_app_page_d8116a46.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_1faa1d4e._.js",
+      "static/chunks/fdea6_next_dist_compiled_react-dom_f077decf._.js",
+      "static/chunks/fdea6_next_dist_compiled_next-devtools_index_335c51ed.js",
+      "static/chunks/fdea6_next_dist_compiled_6c643ca4._.js",
+      "static/chunks/fdea6_next_dist_client_52fa6275._.js",
+      "static/chunks/fdea6_next_dist_76895116._.js",
+      "static/chunks/fdea6_@swc_helpers_cjs_032ea257._.js",
+      "static/chunks/nextjs_my-app_a0ff3932._.js",
+      "static/chunks/turbopack-nextjs_my-app_6bb52f22._.js"
+    ]
+  }
+}
