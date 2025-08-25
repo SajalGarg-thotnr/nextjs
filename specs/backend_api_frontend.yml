@@ -1,0 +1,192 @@
+openapi: 3.0.4
+info:
+  title: BajajAuto - One and Done, Web Application
+  description: An RestFull API service for handling request from BajajAuto One and Done website.
+  version: 1.0.0
+  contact:
+    name: BajajAuto
+    email: support@bajajauto.com
+    url: https://www.bajajauto.com  
+servers:
+  - url: https://localhost/api
+  - url: https://dms.bajajauto.com/api
+  - url: https://dev-dms.bajajauto.com/api
+paths:
+  /customer:
+    get:
+      tags:
+        - Landing Page
+      description: Get customer details for given request
+      parameters:
+        - name: request
+          in: query
+          description: An encoded request string
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerResponse'
+        '400':
+          description: Bad Request with validation errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+  /verification/sent:
+    post:
+      tags:
+        - Verification
+      description: Send OTP verification code to the customer
+      operationId: sendVerificationCode
+      requestBody:
+        description: Verification request payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/errorResponse'
+        required: true
+      responses:
+        '200':
+          description: Verification code sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '400':
+          description: Bad Request with validation errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+  /verification:
+    get:
+      tags:
+        - Verification
+      description: Verify the OTP code sent to the customer
+      responses:
+        '200':
+          description: OTP verification successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '400':
+          description: Bad Request with validation errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+  /verification/resend:
+    post:
+      tags:
+        - Verification
+      description: Resend OTP verification code to the customer
+      operationId: resendVerificationCode
+      requestBody:
+        description: Request to resend verification code
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/errorResponse'
+        required: true
+      responses:
+        '200':
+          description: Verification code resent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '400':
+          description: Bad Request with validation errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+  /verification/verify:
+    post:
+      tags:
+        - Verification
+      description: Verify the OTP code sent to the customer
+      operationId: verifyOtpCode
+      requestBody:
+        description: Request to verify OTP code
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/errorResponse'
+        required: true
+      responses:
+        '200':
+          description: OTP verification successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '400':
+          description: Bad Request with validation errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+components:
+  schemas:
+    customerResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Unique request-id for the link.
+          example: 6584cc10-8959-4fed-9cdc-6c981a93d58c
+        mobileNumber:
+          type: string
+          description: "Mobile number of the customer"
+          example: "+91 98xxxxx670"
+        expiryDate:
+          type: string
+          description: Expiry date of the link.
+          example: "2025-06-30"
+    errorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Bad request
+        errorDetails:
+          type: array
+          items:
+            type: string

@@ -1,0 +1,191 @@
+{
+  "uuid": "3788b63f-6d92-48e6-9025-44245e3f6eb3",
+  "lastMigration": 33,
+  "name": "Mock",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "c24841c8-6a3c-40be-b00b-d48646053685",
+      "type": "http",
+      "documentation": "Customer clicks on the link - Good request",
+      "method": "get",
+      "endpoint": "customer",
+      "responses": [
+        {
+          "uuid": "8cd18420-2146-490d-9e02-c2c293e77006",
+          "body": "{\r\n  \"requestId\": \"6584cc10-8959-4fed-9cdc-6c981a93d58c\",\r\n  \"mobileNumber\": \"+91 1234567890\",\r\n  \"expiryDate\": \"2025-06-30\"\r\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "request",
+              "value": "correct_data",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "dded597d-0698-4be4-ab21-221a572e06a1",
+          "body": "{\r\n  \"error\": \"Invalid Url\",\r\n  \"errorDetails\": [\r\n    \"Please check the link shared with you.\"\r\n  ]\r\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "request",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "98565756-a23f-4dce-8c57-4ae86566fe44",
+          "body": "{\r\n  \"error\": \"Link expired\",\r\n  \"errorDetails\": [\r\n    \"Your link has expired, please check with your dealer.\"\r\n  ]\r\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "request",
+              "value": "expired_link",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "214ee9be-d29b-4665-a859-267fef5f3a3a",
+      "type": "http",
+      "documentation": "Customer click to request generate OTP for verification",
+      "method": "post",
+      "endpoint": "verification/send",
+      "responses": [
+        {
+          "uuid": "64a1dd2c-01ce-4e38-975a-109a949f044e",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "c24841c8-6a3c-40be-b00b-d48646053685"
+    },
+    {
+      "type": "route",
+      "uuid": "214ee9be-d29b-4665-a859-267fef5f3a3a"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}
